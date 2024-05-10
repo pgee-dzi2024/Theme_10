@@ -135,7 +135,7 @@ def manage(request):
     if orders is not None:
         for o in orders:
             if o.is_complete == False:
-                order_dictionary = {'id':o.id,'rent':o.rent, 'vehicle':o.vehicle, 'days':o.days, 'car_dealer':o.car_dealer}
+                order_dictionary = {'id':o.id,'rent':o.rent, 'vehicle':o.vehicle, 'days':o.days, 'dealer':o.car_dealer}
                 order_list.append(order_dictionary)
     return render(request, 'customer/manage.html', {'od':order_list})
 
@@ -164,4 +164,4 @@ def delete_order(request):
     vehicle.is_available = True
     vehicle.save()
     order.delete()
-    return HttpResponseRedirect('/customer_portal/manage/')
+    return HttpResponseRedirect('/customer/manage/')

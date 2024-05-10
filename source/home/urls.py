@@ -1,9 +1,12 @@
-from django.urls import path,include
-from django.conf.urls import url
-from home.views import *
-from car_dealer_portal import *
-from customer_portal import *
+
+from django.conf.urls import *
+from ..home.views import *
+from ..car_dealer_portal import *
+from ..customer_portal import *
+from django.urls import path, include
+
 
 urlpatterns = [
-    url(r'^$',home_page),
+    path(r'^$', home_page),
 ]
+

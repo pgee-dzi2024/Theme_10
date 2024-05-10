@@ -37,9 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'customer_portal',
-    'car_dealer_portal',
-    'home',
+    'customer',
+    'dealer',
+    'main',
 
 ]
 
@@ -81,14 +81,14 @@ WSGI_APPLICATION = 'ocrs.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'ocrsdjango',
-        'USER': 'root',
-        'PASSWORD': '',
+        'NAME': 'dzi_10_s',
+        'USER': 'admin',
+        'PASSWORD': 'admin_2024',
         'HOST': 'localhost',
         'PORT': '3306',
+        'OPTIONS': {'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"}
     }
 }
-
 
 
 # Password validation
