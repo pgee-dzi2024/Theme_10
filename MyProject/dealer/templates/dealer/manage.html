@@ -1,0 +1,39 @@
+{% extends 'dealer/base.html' %}
+{% block content %}
+<div class="w3-bar w3-black w3-large">
+  <div class="w3-bar-item w3-left w3-black">Модул ДИЛЪР: {{user.username}}</div>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'logout' %}">Изход</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right " href="{% url 'auth' %}">Начало</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'order_list' %}">Поръчки</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'manage_vehicles' %}">Коли</a>
+  <div class="w3-bar-item w3-black w3-right" href="{% url 'history' %}">Приходи : {{wallet}} лв.</div>
+</div>
+<h3 class="w3-center" style="padding-top:30"><b>Обявени коли</b></h3>
+<div style="padding:18">
+<table class="w3-table w3-striped w3-center">
+
+  <tr>
+    <th style="padding:20;">Кола </th>
+    <th style="padding:20;">Цвят </th>
+    <th style="padding:20;">Капацитет </th>
+    <th style="padding:20;">ПИН </th>
+    <th style="padding:20;">Адрес</th>
+    <th style="padding:20;">Действие</th>
+  </tr>
+  {% for vehicle in vehicle_list %}
+  <tr>
+      <td>{{vehicle.car_name}}</td>
+      <td>{{vehicle.color}}</td>
+      <td>{{vehicle.capacity}} места</td>
+      <td>{{vehicle.area.pincode}}</td>
+      <td>{{vehicle.area.city}}</td>
+      <td><form action = "{% url 'delete' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{vehicle.id}}">
+        <input class="w3-btn w3-red" type="submit" value="Премахни">
+      </form></td>
+  </tr>
+{% endfor %}
+</table>
+</div>
+{% endblock %}

@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate
 from django.contrib import auth
 from .models import *
 from django.contrib.auth.decorators import login_required
-from ..dealer.models import *
+from dealer.models import *
 from django.http import HttpResponseRedirect
 from django.contrib.auth.models import User
 
@@ -64,15 +64,15 @@ def registration(request):
     except:
         return render(request, 'customer/registration_error.html')
     try:
-        area = Area.objects.get(city = city, pincode = pincode)
+        area = Area.objects.get(city=city, pincode=pincode)
     except:
         area = None
     if area is not None:
-        customer = Customer(user = user, mobile = mobile, area = area)
+        customer = Customer(user=user, mobile=mobile, area = area)
     else:
-        area = Area(city = city, pincode = pincode)
+        area = Area(city=city, pincode=pincode)
         area.save()
-        area = Area.objects.get(city = city, pincode = pincode)
+        area = Area.objects.get(city=city, pincode=pincode)
         customer = Customer(user = user, mobile = mobile, area = area)
 
     customer.save()

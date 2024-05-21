@@ -1,0 +1,17 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+{% csrf_token %}
+<div class="w3-bar w3-black">
+  <div class="w3-bar-item w3-left">Регистриране на потребител</div>
+  <a class="w3-bar-item w3-right w3-btn w3-teal" href="{% url 'login_c' %}">ВХОД</a>
+  <a class="w3-bar-item w3-right w3-btn w3-teal" href="{% url 'index_c' %}">Начало</a>
+</div>
+<div class="w3-center">
+<p class="w3-large">
+Успешна регистрация !
+</p>
+<p class="w3-large">
+Отидете на <a class="w3-btn w3-teal" href="{% url 'login_c' %}">страница за ВХОД</a> в системата!
+</p>
+</div>
+{% endblock %}

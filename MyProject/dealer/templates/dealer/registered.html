@@ -1,0 +1,17 @@
+{% extends 'dealer/base.html' %}
+{% block content %}
+{% csrf_token %}
+<div class="w3-bar w3-black">
+  <div class="w3-bar-item w3-left">Форма за регистрация</div>
+  <a class="w3-bar-item w3-right w3-btn w3-teal" href="{% url 'login' %}">Вход</a>
+  <a class="w3-bar-item w3-right w3-btn w3-teal" href="/">Начало</a>
+</div>
+<div class="w3-center">
+<p class="w3-large">
+Успешна регистрация !
+</p>
+<p class="w3-large">
+Сега отидете на <a class="w3-btn w3-teal" href="{% url 'login' %}">страницата за влизане</a> в ситемата!
+</p>
+</div>
+{% endblock %}

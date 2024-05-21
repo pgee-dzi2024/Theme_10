@@ -1,0 +1,44 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+
+<div class="w3-bar w3-large w3-black">
+  <div class="w3-bar-item w3-left w3-black">Модул КЛИЕНТИ: {{user.username}}</div>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'logout_c' %}">Изход</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'manage_c' %}">Твоите заявки</a>
+  <a class="w3-ber-item w3-btn w3-teal w3-right" href="{% url 'search_c' %}">Намери кола</a>
+</div>
+
+<h3 class="w3-center" style="padding-top:30"><b>Резултати от търсенето</b></h3>
+
+<div class="w3-center" style="padding:50px;">
+<table class="w3-table w3-striped w3-center w3-large">
+  
+
+    <tr>
+      <th style="padding:20">Кола </th>
+      <th style="padding:20">Цвят  </th>
+      <th style="padding:20">Места </th>
+      <th style="padding:20">Описание </th>
+      <th style="padding:20">ПИН </th>
+      <th style="padding:20"></th>
+    </tr>
+    {% for vehicle in request.session.vehicles_list %}
+    <tr>
+      <td>{{vehicle.name}}</td>
+      <td>{{vehicle.color}}</td>
+      <td>{{vehicle.capacity}}</td>
+      <td>{{vehicle.description}}</td>
+      <td>{{vehicle.pincode}}</td>
+      <td><form action = "{% url 'rent_c' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{vehicle.id}}">
+        <input class="w3-btn w3-green" type="submit" value="Rent">
+        </form></td>
+    </tr>
+  {% endfor %}
+
+</table>
+</div>
+{% endblock %}
+
+

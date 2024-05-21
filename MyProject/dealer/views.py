@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
 from django.contrib import auth
 from .models import *
-from ..customer.models import *
+from customer.models import *
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 

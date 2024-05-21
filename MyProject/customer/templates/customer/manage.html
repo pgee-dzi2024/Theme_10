@@ -1,30 +1,31 @@
-{% extends 'customer_portal/base.html' %}
+{% extends 'customer/base.html' %}
 {% block content %}
 <div class="w3-bar w3-large w3-black">
-  <div class="w3-bar-item w3-left w3-black">Customer Portal: {{user.username}}</div>
-  <a class="w3-bar-item w3-btn w3-teal w3-right" href="/customer_portal/logout/">Logout</a>
-  <a class="w3-ber-item w3-btn w3-teal w3-right" href="/customer_portal/search/">Search Cars</a>
+  <div class="w3-bar-item w3-left w3-black">Модул КЛИЕНТИ: {{user.username}}</div>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'logout_c' %}">Изход</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'search_c' %}">Избор на кола</a>
 </div>
-<h3 class="w3-center" style="padding-top:20"><b>Your Orders</b></h3>
+
+<h3 class="w3-center" style="padding-top:20"><b>Твоите заявки</b></h3>
 <div class="w3-center" style="padding:50px;">
 <table class="w3-table w3-striped w3-center">
 
 
   <tr>
-    <th>Car</th>
-    <th>Days</th>
-    <th>Rent</th>
-    <th>Capacity</th>
-    <th>Description</th>
-    <th>Pincode</th>
-    <th>Action</th>
+    <th>Кола</th>
+    <th>Дни</th>
+    <th>Наем</th>
+    <th>Места</th>
+    <th>Описание</th>
+    <th>ПИН</th>
+    <th>Действие</th>
   </tr>
   {% for order in od %}
   <tr>
     <td>{{order.vehicle.car_name}}</td>
     <td>{{order.days}}</td>
-    <td>${{order.rent}}</td>
-    <td>{{order.vehicle.capacity}} Seats</td>
+    <td>{{order.rent}} лв.</td>
+    <td>{{order.vehicle.capacity}} места</td>
     <td>{{order.vehicle.description}}</td>
     <td>{{order.vehicle.area.pincode}}</td>
     <td>

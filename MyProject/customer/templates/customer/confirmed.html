@@ -1,0 +1,22 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div class="w3-bar w3-large w3-black">
+  <div class="w3-bar-item w3-left w3-black">Customer Portal: {{user.username}}</div>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'logout_c' %}">Изход</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'manage_c' %}">Твоите заявки</a>
+  <a class="w3-ber-item w3-btn w3-teal w3-right" href="{% url 'search_c' %}">Намери кола</a>
+</div>
+{% csrf_token %}
+
+<div class="w3-display-container" style="height:400px;">
+  <div class="w3-display-middle">
+<h3><b>Поръчката е завършена</b></h3>
+<b>Вашият избор за кола е приет!</b><br><br>
+<b>Общо наем :</b> {{order.rent}} лв.<br><br>
+<b>Кола :</b> {{order.vehicle.car_name}}<br><br>
+<b>Срок :</b> {{order.days}} days<br><br>
+<b>Наемодател :</b> {{order.car_dealer.car_dealer.first_name}} {{order.car_dealer.car_dealer.last_name}}<br><br>
+<b>Телефон за връзка:</b> {{order.car_dealer.mobile}}<br><br>
+</div>
+</div>
+{% endblock %}

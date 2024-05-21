@@ -1,0 +1,20 @@
+{% extends 'dealer/base.html' %}
+{% block content %}
+{% csrf_token %}
+<div class="w3-bar w3-black w3-large">
+
+  <div class="w3-bar-item w3-left w3-black">Модул ДИЛЪР: {{user.username}}</div>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'logout' %}">Изход</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right " href="{% url 'auth' %}">Начало</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'order_list' %}">Поръчки</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'manage_vehicles' %}">Коли</a>
+  <div class="w3-bar-item w3-black w3-right" href="{% url 'history' %}">Приходи </div>
+</div>
+
+<div class="w3-display-container" style="height:300px;">
+  <div class="w3-display-middle">
+    Успешно са добавени данни за кола! <br><br>
+    <a href="{% url 'index' %}">Към началната страница</a>
+</div>
+</div>
+{% endblock %}

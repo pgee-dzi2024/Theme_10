@@ -1,0 +1,28 @@
+{% extends 'dealer/base.html' %}
+
+{% block content %}
+<div class="w3-bar">
+ 
+  <a class="w3-bar-item w3-right w3-btn w3-teal" href="\">Вход</a>
+  <a class="w3-bar-item w3-right w3-btn w3-teal" href="/">Начало</a>
+</div>
+<div class="w3-display-container"  style="height:1000px;">
+<div class="w3-display-middle">
+
+  <b> <h2>Форма за регистрация</h2></b>
+
+<form class="w3-container" action="{% url 'registration' %}" method="POST">{% csrf_token %}
+  <label>Име</label> <input class="w3-input" type="text" name="firstname"><br><br>
+  <label>Фамилия</label> <input class="w3-input" type="text" name="lastname"><br><br>
+  <label>Потребителско име</label> <input class="w3-input" type="text" name="username"><br><br>
+  <label>Парола</label> <input class="w3-input" type="password" name="password"><br><br>
+  <label>Email</label> <input class="w3-input" type="text" name="email"><br><br>
+  <label>Телефон</label> <input class="w3-input" type="text" name="mobile"><br><br>
+  <label>Населено място</label> <input class="w3-input" type="text" name="city"><br><br>
+  <label>ПИН</label> <input class="w3-input" type="text" name="pincode"><br><br>
+  <input class="w3-btn w3-teal" type="submit"><br><br>
+</form>
+</div>
+</div>
+
+{% endblock %}

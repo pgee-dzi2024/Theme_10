@@ -1,0 +1,21 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+
+<div class="w3-bar w3-large w3-black">
+  <div class="w3-bar-item w3-left w3-black">Модул КЛИЕНТИ: {{user.username}}</div>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'logout_c' %}">Изход</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'manage_c' %}">Твоите заявки</a>
+  <a class="w3-ber-item w3-btn w3-teal w3-right" href="{% url 'search_c' %}">Намери кола</a>
+</div>
+<div class="w3-containet w3-center" style="padding:100px  ">
+<b>Car : {{vehicle.car_name}}</b>
+<form class="w3-container" action="{% url 'confirmed_c' %}" method="post">
+  {% csrf_token %}
+  <b>Цена : {{cost_per_day}} лв. за ден</b><br><br>
+  <label>За колко дена?</label> <input type="text" placeholder="2" name="days"><br><br>
+  <input class="w3-btn w3-teal" type="submit"  value="Confirm My Order"><br><br>
+  <input type="hidden" value="{{vehicle.id}}" name="id">
+  <br><br>
+</form>>
+</div>
+{% endblock %}

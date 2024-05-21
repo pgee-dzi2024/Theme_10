@@ -1,0 +1,39 @@
+{% extends 'dealer/base.html' %}
+{% block content %}
+<div class="w3-bar w3-black w3-large">
+  <div class="w3-bar-item w3-left w3-black">Модул ДИЛЪР: {{user.username}}</div>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'logout' %}">Изход</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right " href="{% url 'auth' %}">Начало</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'order_list' %}">Поръчки</a>
+  <a class="w3-bar-item w3-btn w3-teal w3-right" href="{% url 'manage_vehicles' %}">Коли</a>
+  <div class="w3-bar-item w3-black w3-right" href="{% url 'history' %}">Приходи : {{wallet}} лв.</div>
+</div>
+<h3 class="w3-center" style="padding-top:30"><b>История</b></h3>
+<div style="padding:18">
+<table class="w3-table w3-striped w3-center">
+ 
+  <tr>
+    <th>Име </th>
+    <th>Наем </th>
+    <th>Дни </th>
+    <th>Места</th>
+    <th>
+    </th>
+  </tr>
+  {% for order in order_list %}
+  <tr>
+    <td>{{order.vehicle.car_name}}</td>
+    <td>${{order.rent}}</td>
+    <td>{{order.days}}</td>
+    <td>{{order.vehicle.capacity}}</td>
+    <td>
+      <form action = "{% url 'complete' %}" method="post">
+        {% csrf_token %}
+      </form>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+</div>
+
+{% endblock %}
